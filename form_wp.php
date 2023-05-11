@@ -6,7 +6,7 @@
 
         <div class="formRow formInputName">
             <span class="wpcf7-form-control-wrap" data-name="name-client"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required nameField" aria-required="true" aria-invalid="false" placeholder="Ім'я" value="" type="text" name="name-client"></span>
-        </div>
+        </div> 
 
         <div class="formRow formInputTel">
             <span class="wpcf7-form-control-wrap" data-name="tel-client">
