@@ -28,7 +28,7 @@ if ($post) {
     /*Производим запрос на google сервис и записываем ответ*/
     $Return = getCaptcha($_POST['g-recaptcha-response']);
     /*Выводим на экран полученный ответ*/
-    var_dump($Return);
+    //var_dump($Return);
 
     /*Если запрос удачно отправлен и значение score больше 0,5 выполняем код*/
     if ($Return->success == true && $Return->score > 0.4) {
