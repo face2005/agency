@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Контактная форма с технологией Ajax</title>
+	<!doctype html>
+	<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Контактная форма с технологией Ajax</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.7.0.min.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?render=6LeS8ygmAAAAAHevT7-0kqokA8gd4n8e2pOxYnvI"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/contactform.js"></script>
+		
+
+
+
+	</head>
+
+<body>
+	<div class="form-container">
+		<h2>Контактна форма</h2>
+
+		<div id="note"></div>
+
+		<div id="fields">
+			<form id="ajax-contact-form" action="" data-form-validate="true">
+				<input type="text" name="name" value="" placeholder="Ім'я" required/>
+				<input type="text" name="email" value="" placeholder="Email" required />
+				<input type="text" name="phone" value="" placeholder="Телефон" required />
+				<textarea name="message" rows="5" cols="25" placeholder="Повідомлення" required></textarea>
+
+				<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+				<input class="btn" type="submit" name="submit" value="Відправити" />
+
+				<div class="text-danger" id="recaptchaError"></div>
+			</form>
+		</div>
+	</div>
+	
+</body>
+
+</html>
