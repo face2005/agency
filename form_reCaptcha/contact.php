@@ -5,7 +5,7 @@ define('SECRET_KEY', '6LeS8ygmAAAAAEPOT1uc8XGNwLUWAu8Z8Uewjeyg'); /* секре�
 define ("TELEGRAM_TOKEN", "");
 define ("TELEGRAM_CHAT_ID", "");
 define ("SUBJECT", "Лист з сайту Test"); /* тема письма */
-define ("EMAIL_TO", "golofaev73@gmail.com"); /* куда отправляем */ 
+define ("EMAIL_TO", "golofaev90@gmail.com"); /* куда отправляем */ 
 
 
 $post = (!empty($_POST)) ? true : false;
