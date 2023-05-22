@@ -1,5 +1,11 @@
 jQuery(document).ready(function ($) {
 
+    // добавляем адрес в форму (для рекламы)
+    let fullURL = window.location.href;
+    sessionStorage.setItem('fullURL', fullURL);
+    $("input[name='url']").val(sessionStorage.getItem('fullURL'));
+
+
     // валидация 
     $("form[data-form-validate='true']").each(function () {
         $(this).validate({
@@ -12,22 +18,12 @@ jQuery(document).ready(function ($) {
                 error.appendTo($('#invalid'));
             }
         });
-
-    })
-
-
-
-
-    // полчаем токен от reCaptcha 
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LeS8ygmAAAAAHevT7-0kqokA8gd4n8e2pOxYnvI', { action: 'homepage' }).then(function (token) {
-            console.log(token);
-            document.getElementById('g-recaptcha-response').value = token;
-        });
     });
 
-    // обновляем токен от reCaptcha 
-    $("[type='submit00']").on("click", function () {
+
+    // получаем токен от reCaptcha 
+    grecaptcha.ready(function () {
+        // ключ сайта тут нужно менять
         grecaptcha.execute('6LeS8ygmAAAAAHevT7-0kqokA8gd4n8e2pOxYnvI', { action: 'homepage' }).then(function (token) {
             console.log(token);
             document.getElementById('g-recaptcha-response').value = token;
@@ -46,12 +42,16 @@ jQuery(document).ready(function ($) {
                 if (msg == 'OK') {
                     result = '<div class="notification_ok">Ваше сообщение было отправлено</div>';
                     $("#fields").hide();
+                    /* если нужно перенаправление */
+                    //window.location.href = "";
                 } else {
                     result = msg;
-                    grecaptcha.execute('6LeS8ygmAAAAAHevT7-0kqokA8gd4n8e2pOxYnvI', { action: 'homepage' }).then(function (token) {
+                    // обновляем токен от reCaptcha
+                    // ключ сайта тут нужно менять
+                    /*grecaptcha.execute('6LeS8ygmAAAAAHevT7-0kqokA8gd4n8e2pOxYnvI', { action: 'homepage' }).then(function (token) {
                         console.log(token);
                         document.getElementById('g-recaptcha-response').value = token;
-                    });
+                    });*/
                 }
                 $('#note').html(result);
             }

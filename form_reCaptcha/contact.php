@@ -5,7 +5,7 @@ define('SECRET_KEY', '6LeS8ygmAAAAAEPOT1uc8XGNwLUWAu8Z8Uewjeyg'); /* секре�
 define ("TELEGRAM_TOKEN", "");
 define ("TELEGRAM_CHAT_ID", "");
 define ("SUBJECT", "Лист з сайту Test"); /* тема письма */
-define ("EMAIL_TO", "golofaev90@gmail.com"); /* куда отправляем */ 
+define ("EMAIL_TO", "golofaev73@gmail.com"); /* куда отправляем */ 
 
 
 $post = (!empty($_POST)) ? true : false;
@@ -15,6 +15,8 @@ if ($post) {
     $email = htmlspecialchars($_POST['email']);
     $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
+    $call = $_POST['call'];
+    $urlAll = $_POST['url'];
     $error = '';
 
     /*Создаем функцию которая делает запрос на google сервис*/
@@ -31,7 +33,7 @@ if ($post) {
     //var_dump($Return);
 
     /*Если запрос удачно отправлен и значение score больше 0,5 выполняем код*/
-    if ($Return->success == true && $Return->score > 0.4) {
+    if ($Return->success == true && $Return->score > 0) {
         $captcha_success = "captchaOk";
         //echo $captcha_success;
     } else {
@@ -41,45 +43,9 @@ if ($post) {
     }
 
 
-
-    if (!$name) {
-        $error .= 'Пожалуйста введите ваше имя.<br />';
-    }
-
-    // Check email
-    function ValidateEmail($value)
-    {
-        $regex = '|^[-0-9a-z_\.]+@[-0-9a-z_^\.]+\.[a-z]{2,6}$|i';
-
-        if ($value == '') {
-            return false;
-        } else {
-            $string = preg_replace($regex, '', $value);
-        }
-
-        return empty($string) ? true : false;
-    }
-
-    if (!$email) {
-        $error .= 'Пожалуйста введите e-mail.<br />';
-    }
-
-    if ($email && !ValidateEmail($email)) {
-        $error .= 'Введите корректный e-mail.<br />';
-    }
-
-    // Check message (length)
-    if (!$message || strlen($message) < 1) {
-        $error .= "Введите ваше сообщение.<br />"; // В этой строчке ставиться минимальное ограничение на написание букв.
-    }
-
-
     
 	// сообщение, которое будет отправлено в Telegram
-	$text = "Новое сообщение с сайта:\n\nИмя: $name\nТелефон: $phone\nКак связаться: $call\nСсылка: $urlAll";
-
-
-
+	$text = "Новое сообщение с сайта:\n\nІм\'я: $name\nТелефон: $phone\nEmail: $email\nПовідомлення: $message\nКак связаться: $call\nСсылка: $urlAll";
 
 
     if (!$error) {
@@ -100,6 +66,16 @@ if ($post) {
                     <tr>
                     <td>Телефон</td>
                     <td>' . $phone . '</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                    <td>Email</td>
+                    <td>' . $email . '</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                    <td>Повідомлення</td>
+                    <td>' . $message . '</td>
                     </tr>
                     <tr>
                     <td>Як зв\'язатись?</td>
