@@ -33,7 +33,7 @@ if ($post) {
     //var_dump($Return);
 
     /*Если запрос удачно отправлен и значение score больше 0,5 выполняем код*/
-    if ($Return->success == true && $Return->score > 0) {
+    if ($Return->success == true && $Return->score > 0.5) {
         $captcha_success = "captchaOk";
         //echo $captcha_success;
     } else {
