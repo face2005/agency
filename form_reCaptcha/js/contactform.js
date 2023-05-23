@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
 
+    // маска телефона
+    $('input[type="tel"]').mask('+38(999) 999-99-99');
+
      // получаем токен от reCaptcha 
      grecaptcha.ready(function () {
         // ключ сайта тут нужно менять
