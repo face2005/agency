@@ -27,7 +27,7 @@ if ($post) {
         return $Return;
     }
 
-    /*Производим запрос на google сервис и записываем ответ*/
+    /* Производим запрос на google сервис и записываем ответ */
     $Return = getCaptcha($_POST['g-recaptcha-response']);
     /*Выводим на экран полученный ответ*/
     //var_dump($Return);
