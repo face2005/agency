@@ -2,7 +2,7 @@
 /*
 Plugin Name: Insider Insights
 Description: works in your theme
-Version: 12.01
+Version: 122.01
 */
 
 define('FC_PLUGIN_DIR', plugin_dir_path(__FILE__));
