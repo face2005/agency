@@ -2,7 +2,7 @@
 /*
 Plugin Name: Insider Insights
 Description: works in your theme
-Version: 122.01
+Version: 12.01
 */
 
 define('FC_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -67,11 +67,51 @@ function sa_wp_admin_style()
 
 
 // меняем текст над формой
-function change_login_logo_text()
-{
-    return 'Вітаємо з поверненням!';
+function my_custom_login_script() {
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var lang = document.documentElement.lang; // Получаем значение атрибута lang из <html>
+
+            var h1 = document.querySelector('#login > h1'); // Находим элемент h1 внутри блока с id #login
+            if (h1) { // Если элемент h1 найден
+                switch(lang) {
+                    case 'uk':
+                        h1.textContent = 'Вітаємо з поверненням!'; // Заменяем текст для украинского языка
+                        break;
+                    case 'ru-RU':
+                        h1.textContent = 'Поздравляем с возвращением!'; // Заменяем текст для русского языка
+                        break;
+                    case 'en-US':
+                        h1.textContent = 'Welcome back!'; // Заменяем текст для английского языка
+                        break;
+                    // Добавьте дополнительные условия для других языков здесь
+                    default:
+                        h1.textContent = 'Welcome back!'; // Текст по умолчанию
+                }
+            }
+        });
+    </script>
+    <?php
 }
-add_filter('login_headertext', 'change_login_logo_text');
+add_action('login_enqueue_scripts', 'my_custom_login_script');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Добавляем блок информации непосредственно в административную панель
