@@ -24,7 +24,7 @@
 	box-sizing: border-box;
 }
 
-body.login{
+body.login {
 	display: flex;
 	background: #fff;
 	min-height: 100vh;
@@ -437,7 +437,7 @@ body.login{
 
 @media(max-width: 640px) {  
 
-	body.login {
+	body.login{
 		flex-direction: column;
 	}
 

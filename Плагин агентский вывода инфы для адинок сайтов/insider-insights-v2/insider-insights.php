@@ -87,7 +87,7 @@ function my_custom_login_script() {
                         break;
                     // Добавьте дополнительные условия для других языков здесь
                     default:
-                        h1.textContent = 'Welcome back!'; 
+                        h1.textContent = 'Welcome back!'; // Текст по умолчанию
                 }
             }
         });
